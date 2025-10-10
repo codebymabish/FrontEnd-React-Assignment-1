@@ -44,7 +44,8 @@ Using **React Components & React Router**, the following pages are created:
 - **Services Page** – 
 - **About Us Page** – 
 - **Contact Us Page** –
-- **Footer & Navbar** –
+- **Sign up and Login Page** –
+- **Teacher and Student Dashboards** –
 
 ---
 
