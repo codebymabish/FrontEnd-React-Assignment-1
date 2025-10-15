@@ -9,7 +9,29 @@
 ###  User Management
 - **Registration & Login** for Teachers and Students
 - Profile Creation and Editing
-- Students can search teachers by **Name or Email**
+- Students can search teachers by **Name or Email**-- Create table for connection requests
+create table if not exists connection_requests (
+  id uuid primary key default gen_random_uuid(),
+  student_id uuid not null,
+  teacher_id uuid not null,
+  message text,
+  status text not null default 'pending', -- pending | accepted | rejected
+  created_at timestamptz not null default now(),
+  updated_at timestamptz
+);
+
+create index if not exists idx_connection_requests_student on connection_requests(student_id);
+create index if not exists idx_connection_requests_teacher on connection_requests(teacher_id);
+
+-- Create table for accepted connections (links)
+create table if not exists connections (
+  id uuid primary key default gen_random_uuid(),
+  student_id uuid not null,
+  teacher_id uuid not null,
+  created_at timestamptz not null default now()
+);
+
+create unique index if not exists ux_connections_student_teacher on connections(student_id, teacher_id);
 - Request and link to teacher for course access
 
 ###  Dashboard

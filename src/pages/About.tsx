@@ -57,7 +57,7 @@ const About = () => {
       </section>
 
       {/* Story Section */}
-      <section className="py-20 bg-background relative overflow-hidden">
+      <section className="py-18 bg-background relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-muted/20 to-transparent" />
         <div className="container mx-auto px-4 relative">
           <div className="max-w-4xl mx-auto space-y-12">

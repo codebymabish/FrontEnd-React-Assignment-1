@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, BookOpen, Users, Zap, Clock, BarChart, Shield } from "lucide-react";
-import heroImage from "../../public/assets/hero-image.jpg";
+import heroImage from "../assets/hero-image.jpg";
 
 const Home = () => {
   const navigate = useNavigate();
