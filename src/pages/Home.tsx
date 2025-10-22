@@ -97,7 +97,7 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-background">
+      <section className="py-19 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold">
@@ -112,7 +112,7 @@ const Home = () => {
             {features.map((feature, index) => (
               <Card
                 key={index}
-                className="p-6 hover:shadow-elevated transition-smooth border-border/50 group hover:border-primary/50"
+                className="p-6 transition-smooth group border-primary/50 shadow-glow"
               >
                 <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mb-4 shadow-glow group-hover:scale-110 transition-smooth">
                   <feature.icon className="w-6 h-6 text-primary-foreground" />

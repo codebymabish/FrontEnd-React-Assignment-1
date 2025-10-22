@@ -49,8 +49,9 @@ const About = () => {
             <h1 className="text-5xl md:text-6xl font-bold">
               About <span className="text-gradient">QuizQuest</span>
             </h1>
-            <p className="text-xl text-muted-foreground">
-              Transforming education through intelligent quiz creation and management
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              QuizQuest is an AI-powered educational platform that revolutionizes quiz creation and assessment.
+              Our mission is to empower educators with intelligent tools while making learning engaging for students.
             </p>
           </div>
         </div>
@@ -61,16 +62,7 @@ const About = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-muted/20 to-transparent" />
         <div className="container mx-auto px-4 relative">
           <div className="max-w-4xl mx-auto space-y-12">
-            <div className="text-center space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full">
-                <Sparkles className="w-4 h-4 text-primary" />
-                <span className="text-sm font-semibold text-primary">Our Journey</span>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold">Our Story</h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Born from a passion for education and technology, powered by innovation
-              </p>
-            </div>
+            
             
             <div className="grid md:grid-cols-2 gap-6">
               <Card className="p-8 border-border/50 shadow-elevated hover:shadow-glow transition-smooth group relative overflow-hidden">
@@ -117,7 +109,7 @@ const About = () => {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20 bg-muted/30 relative">
+      <section className="py-16 bg-muted/30 relative">
         <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
         <div className="container mx-auto px-4 relative">
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -145,9 +137,9 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-6">
+      <section className="py-16 bg-background">
+        <div className="container mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-12 space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full">
               <Award className="w-4 h-4 text-primary" />
               <span className="text-sm font-semibold text-primary">What Drives Us</span>
@@ -178,30 +170,30 @@ const About = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-24 bg-gradient-primary relative overflow-hidden">
+      <section className="py-16 bg-gradient-primary relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjAzIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-40" />
         <div className="container mx-auto px-4 relative">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-3">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-2">
               Making an Impact Worldwide
             </h2>
-            <p className="text-primary-foreground/80 text-lg">
+            <p className="text-primary-foreground/80">
               Join thousands of educators transforming education
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {[
               { value: "10K+", label: "Active Users", icon: Users },
               { value: "50K+", label: "Quizzes Created", icon: Target },
               { value: "100+", label: "Countries", icon: Award },
               { value: "98%", label: "Satisfaction", icon: Heart },
             ].map((stat, index) => (
-              <div key={index} className="text-center space-y-4 group">
-                <div className="inline-flex w-16 h-16 bg-primary-foreground/10 backdrop-blur-sm rounded-2xl items-center justify-center mb-2 group-hover:scale-110 transition-smooth">
-                  <stat.icon className="w-8 h-8 text-primary-foreground" />
+              <div key={index} className="text-center space-y-3 group">
+                <div className="inline-flex w-12 h-12 bg-primary-foreground/10 backdrop-blur-sm rounded-xl items-center justify-center group-hover:scale-110 transition-smooth">
+                  <stat.icon className="w-6 h-6 text-primary-foreground" />
                 </div>
-                <div className="text-5xl md:text-6xl font-bold text-primary-foreground group-hover:scale-110 transition-smooth">{stat.value}</div>
-                <div className="text-primary-foreground/90 font-semibold text-lg">{stat.label}</div>
+                <div className="text-4xl font-bold text-primary-foreground group-hover:scale-110 transition-smooth">{stat.value}</div>
+                <div className="text-primary-foreground/90 font-medium text-sm">{stat.label}</div>
               </div>
             ))}
           </div>

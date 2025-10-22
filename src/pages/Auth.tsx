@@ -1,25 +1,13 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useToast } from "@/hooks/use-toast";
 import { GraduationCap, Sparkles } from "lucide-react";
-import { z } from "zod";
-
-const authSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-  fullName: z.string().min(2, "Name must be at least 2 characters").optional(),
-});
 
 const Auth = () => {
-  const navigate = useNavigate();
-  const { toast } = useToast();
-  const [loading, setLoading] = useState(false);
+  const [activeTab, setActiveTab] = useState<"login" | "signup">("login");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [signupEmail, setSignupEmail] = useState("");
@@ -27,118 +15,19 @@ const Auth = () => {
   const [signupFullName, setSignupFullName] = useState("");
   const [signupRole, setSignupRole] = useState<"teacher" | "student">("student");
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    try {
-      authSchema.omit({ fullName: true }).parse({ email: loginEmail, password: loginPassword });
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        toast({
-          title: "Validation Error",
-          description: error.errors[0].message,
-          variant: "destructive",
-        });
-        return;
-      }
-    }
-
-    setLoading(true);
-
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: loginEmail,
-      password: loginPassword,
-    });
-
-    setLoading(false);
-
-    if (error) {
-      toast({
-        title: "Login Failed",
-        description: error.message,
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (data.user) {
-      toast({
-        title: "Welcome back!",
-        description: "You've successfully logged in.",
-      });
-      navigate("/dashboard");
-    }
+   
   };
 
-  const handleSignup = async (e: React.FormEvent) => {
+  const handleSignup = (e: React.FormEvent) => {
     e.preventDefault();
-
-    try {
-      authSchema.parse({ email: signupEmail, password: signupPassword, fullName: signupFullName });
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        toast({
-          title: "Validation Error",
-          description: error.errors[0].message,
-          variant: "destructive",
-        });
-        return;
-      }
-    }
-
-    setLoading(true);
-
-    const redirectUrl = `${window.location.origin}/dashboard`;
-
-    const { data, error } = await supabase.auth.signUp({
-      email: signupEmail,
-      password: signupPassword,
-      options: {
-        emailRedirectTo: redirectUrl,
-        data: {
-          full_name: signupFullName,
-        },
-      },
-    });
-
-    if (error) {
-      setLoading(false);
-      toast({
-        title: "Signup Failed",
-        description: error.message,
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (data.user) {
-      // Insert role for the user
-      const { error: roleError } = await supabase
-        .from("user_roles")
-        .insert({ user_id: data.user.id, role: signupRole });
-
-      setLoading(false);
-
-      if (roleError) {
-        toast({
-          title: "Role Assignment Failed",
-          description: "Account created but role assignment failed. Please contact support.",
-          variant: "destructive",
-        });
-        return;
-      }
-
-      toast({
-        title: "Account Created!",
-        description: `Welcome to QuizQuest! You've registered as a ${signupRole}.`,
-      });
-      navigate("/dashboard");
-    }
+    
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-primary/5 px-4 py-12">
-      <Card className="w-full max-w-md shadow-elevated">
+    <div className="mt-10 min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-primary/5 px-4 py-12">
+      <Card className="w-full max-w-md shadow-elevated hover:shadow-glow">
         <CardHeader className="text-center space-y-4">
           <div className="flex items-center justify-center gap-3">
             <div className="relative">
@@ -154,12 +43,13 @@ const Auth = () => {
           </div>
         </CardHeader>
         <CardContent>
-          <Tabs defaultValue="login" className="w-full">
+          <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "login" | "signup")} className="w-full">
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="login">Login</TabsTrigger>
               <TabsTrigger value="signup">Sign Up</TabsTrigger>
             </TabsList>
 
+            {/* Login Form */}
             <TabsContent value="login">
               <form onSubmit={handleLogin} className="space-y-4 mt-4">
                 <div className="space-y-2">
@@ -184,12 +74,13 @@ const Auth = () => {
                     required
                   />
                 </div>
-                <Button type="submit" className="w-full" disabled={loading}>
-                  {loading ? "Logging in..." : "Login"}
+                <Button type="submit" className="w-full">
+                  Login
                 </Button>
               </form>
             </TabsContent>
 
+            {/* Signup Form */}
             <TabsContent value="signup">
               <form onSubmit={handleSignup} className="space-y-4 mt-4">
                 <div className="space-y-2">
@@ -237,8 +128,8 @@ const Auth = () => {
                     <option value="teacher">Teacher</option>
                   </select>
                 </div>
-                <Button type="submit" className="w-full" variant="gradient" disabled={loading}>
-                  {loading ? "Creating Account..." : "Create Account"}
+                <Button type="submit" className="w-full" variant="gradient">
+                  Create Account
                 </Button>
               </form>
             </TabsContent>

@@ -9,17 +9,12 @@ import Home from "./pages/Home";
 import Services from "./pages/Services";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
-import Profile from "./pages/Profile";
-import FindTeachers from "./pages/FindTeachers";
-import ConnectionRequests from "./pages/ConnectionRequests";
-import Courses from "./pages/Courses";
-import Topics from "./pages/Topics";
-import Quizzes from "./pages/Quizzes";
-import QuizQuestions from "./pages/QuizQuestions";
-import QuizSettings from "./pages/QuizSettings";
 import NotFound from "./pages/NotFound";
+import StudentDashboard from "./components/dashboard/StudentDashboard";
+import TeacherDashboard from "./components/dashboard/TeacherDashboard";
+import Auth from "./pages/Auth";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +24,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -37,15 +33,8 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/find-teachers" element={<FindTeachers />} />
-          <Route path="/connection-requests" element={<ConnectionRequests />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/courses/:courseId/topics" element={<Topics />} />
-          <Route path="/courses/:courseId/quizzes" element={<Quizzes />} />
-          <Route path="/quizzes/:quizId/questions" element={<QuizQuestions />} />
-          <Route path="/quizzes/:quizId/settings" element={<QuizSettings />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/dashboard/student" element={<StudentDashboard />} />
+          <Route path="/dashboard/teacher" element={<TeacherDashboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

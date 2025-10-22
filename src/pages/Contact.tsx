@@ -113,14 +113,13 @@ const Contact = () => {
               Get in <span className="text-gradient">Touch</span>
             </h1>
             <p className="text-xl text-muted-foreground">
-              Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+              Have questions? We're here to help you enhance your teaching and learning experience.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-20 bg-background">
+      <section className="py-12 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Contact Info */}
@@ -233,6 +232,48 @@ const Contact = () => {
         </div>
       </section>
 
+      {/* Summary Section - Moved below contact */}
+      <section className="py-12 bg-background/50 border-y border-border/50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-8">Learn More About Us</h2>
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <Card className="p-6 shadow-elevated border-border/50 hover:shadow-card transition-smooth">
+              <h3 className="text-2xl font-bold mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                About QuizQuest
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                QuizQuest is an innovative AI-powered educational platform designed to revolutionize 
+                quiz creation and assessment. We empower educators with intelligent tools while making 
+                learning engaging and effective for students worldwide.
+              </p>
+            </Card>
+
+            <Card className="p-6 shadow-elevated border-border/50 hover:shadow-card transition-smooth">
+              <h3 className="text-2xl font-bold mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Our Services
+              </h3>
+              <ul className="space-y-2 text-muted-foreground">
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary/70" />
+                  AI-powered quiz generation from documents
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary/70" />
+                  Comprehensive analytics and reporting
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary/70" />
+                  Student progress tracking and management
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary/70" />
+                  Customizable assessment tools
+                </li>
+              </ul>
+            </Card>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

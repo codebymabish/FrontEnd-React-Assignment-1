@@ -17,7 +17,29 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+/* Purple-bordered card styles for Home & Services pages */
+.hq-card {
+  border: 2px solid rgba(124,58,237,0.28); /* purple with some transparency */
+  border-radius: 0.5rem; /* rounded corners */
+  background-clip: padding-box;
+  transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+  /* keep a subtle base shadow to lift cards slightly off the page */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+}
 
+/* Hover/focus effect: light purple background shade + slight zoom/focus */
+.hq-card:hover,
+.hq-card:focus-within {
+  background-color: rgba(124,58,237,0.06); /* very light purple tint */
+  transform: translateY(-6px) scale(1.02); /* gentle zoom-in */
+  box-shadow: 0 18px 40px rgba(124,58,237,0.08); /* purple-tinged shadow */
+  outline: none;
+}
+
+/* Make sure inner content doesn't overflow rounded border on hover */
+.hq-card > * {
+  border-radius: inherit;
+}
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
