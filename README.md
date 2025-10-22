@@ -109,8 +109,8 @@ QuizQuest is an innovative AI-powered educational platform that revolutionizes q
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/quizquest.git
-cd quizquest
+git clone https://github.com/codebymabish/FrontEnd-React-Assignment-1.git
+cd FrontEnd-React-Assignment-1
 ```
 
 2. Install dependencies:
@@ -134,15 +134,14 @@ yarn dev
 ## Project Structure
 
 ```
-quizquest/
+FrontEnd-React-Assignment-1/
+├── public/             # Static assets
 ├── src/
 │   ├── components/      # Reusable UI components
 │   ├── pages/          # Page components
 │   ├── styles/         # Global styles
-│   ├── lib/            # Utilities and helpers
 │   ├── types/          # TypeScript type definitions
 │   └── App.tsx         # Root component
-├── public/             # Static assets
 └── package.json        # Project dependencies
 ```
 
@@ -168,13 +167,6 @@ quizquest/
 - Add appropriate comments and documentation
 - Follow the established code style
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
-
-## Contact
-
-Project Link: [https://github.com/yourusername/quizquest](https://github.com/yourusername/quizquest)
 
 ## Acknowledgments
 
