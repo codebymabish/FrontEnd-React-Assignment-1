@@ -1,86 +1,188 @@
-# QuizQuest-1: Smart Quiz Management System
+# QuizQuest - AI-Powered Learning Platform
 
-**QuizQuest-1** is a modern, AI-assisted quiz management platform built with **React** and **Tailwind CSS**, designed to simplify quiz creation, student-teacher collaboration, and performance tracking. This project is developed as part of the **Advanced Web Development** course (Assignment #1).
+## Overview
+
+QuizQuest is an innovative AI-powered educational platform that revolutionizes quiz creation and assessment. Built with React, TypeScript, and modern web technologies, it empowers educators to create engaging assessments while making learning interactive for students.
+
+## Features
+
+## 1. User Authentication & Registration
+
+### Teacher Registration
+- Create account with email verification
+- Complete profile setup
+- Add professional details and subjects taught
+
+### Student Registration
+- Create account with email verification
+- Complete profile setup
+- Search and connect with teachers
+
+## 2. Dashboard Features
+
+### Teacher Dashboard
+- Profile management
+- Student connection requests
+- Course management
+- Quiz creation and management
+- Reports and analytics
+
+### Student Dashboard
+- Profile management
+- Teacher search functionality
+- Course enrollment status
+- Available quizzes
+- Performance reports
+
+## 3. Quiz Creation System
+
+### AI-Powered Question Generation
+- Upload document support:
+  - PDF files
+  - Word documents
+  - PowerPoint presentations
+- Topic-based generation:
+  - Specify subject/topic
+  - Set difficulty level
+  - Automatic question generation
+
+### Manual Question Management
+- Create custom questions
+- Edit AI-generated questions
+- Organize question banks
+- Set question properties
+
+## 4. Quiz Access Control
+
+### Attendance Management
+- Mark student attendance
+- Set attendance criteria
+- Allow/disallow quiz access based on attendance
+
+### Quiz Settings
+- Questions per page configuration
+- Question randomization
+- Option shuffling
+- Custom marking scheme
+
+## 5. Quiz Execution
+
+### Timer Features
+- Set overall quiz duration
+- Individual question timers (optional)
+- Auto-submit on time expiry
+
+### Display Settings
+- Configurable questions per page
+- Question shuffling
+- Option shuffling
+- Progress indicator
+
+## 6. Report Generation
+
+### Teacher Reports
+- Student-wise performance analysis
+- Quiz statistics
+- Downloadable PDF reports
+- Custom report filters
+
+### Student Reports
+- Performance analytics
+- Answer review
+- Progress tracking
+- Score history
+
+
+## Tech Stack
+
+- **Frontend**: React, TypeScript, TailwindCSS
+- **UI Components**: Shadcn/ui
+- **State Management**: React Query
+- **Routing**: React Router 
+- **Styling**: TailwindCSS + CSS Modules
+- **Icons**: Lucide Icons
+- **Forms**: React Hook Form + Zod
+
+## Getting Started
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/quizquest.git
+cd quizquest
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+4. Open [http://localhost:5173](http://localhost:5173) in your browser
+
+```
+
+## Project Structure
+
+```
+quizquest/
+├── src/
+│   ├── components/      # Reusable UI components
+│   ├── pages/          # Page components
+│   ├── styles/         # Global styles
+│   ├── lib/            # Utilities and helpers
+│   ├── types/          # TypeScript type definitions
+│   └── App.tsx         # Root component
+├── public/             # Static assets
+└── package.json        # Project dependencies
+```
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/AmazingFeature`
+3. Commit your changes: `git commit -m 'Add some AmazingFeature'`
+4. Push to the branch: `git push origin feature/AmazingFeature`
+5. Open a Pull Request
+
+## Best Practices
+
+- Follow the [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/)
+- Use functional components and hooks
+- Write meaningful commit messages
+- Add appropriate comments and documentation
+- Follow the established code style
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
+## Contact
+
+Project Link: [https://github.com/yourusername/quizquest](https://github.com/yourusername/quizquest)
+
+## Acknowledgments
+
+- [Shadcn/ui](https://ui.shadcn.com/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [React Query](https://tanstack.com/query/latest)
+- [Lucide Icons](https://lucide.dev/)
 
 ---
 
-##  Features
-
-###  User Management
-- **Registration & Login** for Teachers and Students
-- Profile Creation and Editing
-- Students can search teachers by **Name or Email**-- Create table for connection requests
-create table if not exists connection_requests (
-  id uuid primary key default gen_random_uuid(),
-  student_id uuid not null,
-  teacher_id uuid not null,
-  message text,
-  status text not null default 'pending', -- pending | accepted | rejected
-  created_at timestamptz not null default now(),
-  updated_at timestamptz
-);
-
-create index if not exists idx_connection_requests_student on connection_requests(student_id);
-create index if not exists idx_connection_requests_teacher on connection_requests(teacher_id);
-
--- Create table for accepted connections (links)
-create table if not exists connections (
-  id uuid primary key default gen_random_uuid(),
-  student_id uuid not null,
-  teacher_id uuid not null,
-  created_at timestamptz not null default now()
-);
-
-create unique index if not exists ux_connections_student_teacher on connections(student_id, teacher_id);
-- Request and link to teacher for course access
-
-###  Dashboard
-- Separate dashboards for **Students** and **Teachers**
-- Teachers can register courses and add topics
-- Students can view quizzes, reports, and attempt quizzes with a timer
-
-###  AI-Powered Quiz Generation
-- Upload **PDF / Word / PPT**, and the system auto-generates questions
-- Alternatively, input a **topic and difficulty level**, and get auto-created quiz questions
-
-###  Quiz Management
-- Teachers can create, approve, or disallow quiz attempts
-- Attendance marking system for quiz participation
-- Settings for:
-  - Number of questions per page
-  - Shuffle questions & options
-  - Marks per question
-  - Quiz timer
-
-###  Reports
-- Detailed quiz performance reports per student
-- Downloadable in **PDF** format
-
----
-
-##  Pages Implemented
-
-Using **React Components & React Router**, the following pages are created:
-
-- **Home Page** – 
-- **Services Page** – 
-- **About Us Page** – 
-- **Contact Us Page** –
-- **Sign up and Login Page** –
-- **Teacher and Student Dashboards** –
-
----
-
-##  Design System
-
-- **Tech Stack:** React+Vite , Tailwind CSS
-- **Theme:**
-  - Primary Gradient: `#6B46C1 → #4338CA` (Purple-Blue)
-  - Accent Color: `#F97316` (Orange)
-  - Typography: Clean, modern sans-serif fonts
-- **Animations:** Smooth transitions, hover effects, fade-ins
-- **Layout:** Card-based, fully responsive (mobile-first)
-
----
-
-
+Made with ❤️ by QuizQuest-1 Team Section-C(008,031,178) .
